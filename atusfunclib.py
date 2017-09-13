@@ -11,6 +11,19 @@ import os
 import pandas as pd
 
 
+def group_filter_average(df, groupbycol, filtercol, fval, weights='TUFNWGTP'):
+    # Filtered dataframes and excluding NA values
+    df_filter = df[df[filtercol] >= fval].dropna(subset=[groupbycol])
+
+    # Group by and fiter by respondents age >= 18
+    df_group = df_filter.groupby(groupbycol)
+
+    # Weighted average activity times by group
+    df_av_group = df_group.sum().filter(like='_W').filter(like='t').divide(df_group[weights].sum(), axis='index')
+
+    return [df_filter, df_group, df_av_group]
+
+
 def load_data(loc='data'):
     # Import all data
     df = pd.read_csv(os.path.join(loc, "alldata_0315.csv"), index_col=0)
