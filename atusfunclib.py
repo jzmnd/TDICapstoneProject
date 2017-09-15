@@ -26,8 +26,12 @@ def group_filter_average(df, groupbycol, filtercol, fval, weights='TUFNWGTP'):
 
 def load_data(loc='data'):
     # Import all data from pickle
-    #df = pd.read_csv(os.path.join(loc, "alldata_0315.csv"), index_col=0)
-    df = pd.read_pickle(os.path.join(loc, "alldata_0315_df.pkl"))
+    if os.path.isfile(os.path.join(loc, "alldata_0315_df.pkl")):
+        df = pd.read_pickle(os.path.join(loc, "alldata_0315_df.pkl"))
+    elif os.path.isfile(os.path.join(loc, "alldata_0315.csv")):
+        df = pd.read_csv(os.path.join(loc, "alldata_0315.csv"), index_col=0)
+    else:
+        df = pd.DataFrame()
 
     # Import activity code dictionary csv to df
     dfactcodes = pd.read_csv(os.path.join(loc, "activity_codes.csv"),
