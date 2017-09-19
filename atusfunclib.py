@@ -91,5 +91,12 @@ def load_data(loc='data'):
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
 
+    # Import input codes
+    dfdemocodes = pd.read_csv(os.path.join(loc, "demographic_codes.csv"),
+                             index_col=False,
+                             sep=';',
+                             dtype={'CODE': str, 'NAME': str})
+
     return [df, dfactcodes, dfeducodes, dfinccodes, dfagecodes,
-            dfempcodes, dfindcodes, dfraccodes, dfloccodes, dfwhocodes]
+            dfempcodes, dfindcodes, dfraccodes, dfloccodes, dfwhocodes,
+            dfdemocodes]

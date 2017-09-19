@@ -33,3 +33,7 @@ wheels/
 test*
 data/
 docs/
+
+# Conifg
+config
+
