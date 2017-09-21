@@ -24,17 +24,17 @@ def group_filter_average(df, groupbycol, filtercol, fval, weights='TUFNWGTP'):
     return [df_filter, df_group, df_av_group]
 
 
-def load_data(loc='data'):
+def load_data(loc='data', loc_clean="cleaned_data", loc_codes="code_tables"):
     # Import all data from pickle
-    if os.path.isfile(os.path.join(loc, "alldata_0315_df.pkl")):
-        df = pd.read_pickle(os.path.join(loc, "alldata_0315_df.pkl"))
-    elif os.path.isfile(os.path.join(loc, "alldata_0315.csv")):
-        df = pd.read_csv(os.path.join(loc, "alldata_0315.csv"), index_col=0)
+    if os.path.isfile(os.path.join(loc, loc_clean, "alldata_0315_df.pkl")):
+        df = pd.read_pickle(os.path.join(loc, loc_clean, "alldata_0315_df.pkl"))
+    elif os.path.isfile(os.path.join(loc, loc_clean, "alldata_0315.csv")):
+        df = pd.read_csv(os.path.join(loc, loc_clean, "alldata_0315.csv"), index_col=0)
     else:
         df = pd.DataFrame()
 
     # Import activity code dictionary csv to df
-    dfactcodes = pd.read_csv(os.path.join(loc, "activity_codes.csv"),
+    dfactcodes = pd.read_csv(os.path.join(loc, loc_codes, "activity_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
@@ -44,58 +44,58 @@ def load_data(loc='data'):
     dfactcodes = dfactcodes.sort_values('CODE').reset_index(drop=True)
 
     # Import education level code dictionary csv to df
-    dfeducodes = pd.read_csv(os.path.join(loc, "edu_codes.csv"),
+    dfeducodes = pd.read_csv(os.path.join(loc, loc_codes, "edu_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
 
     # Import income level code dictionary csv to df
-    dfinccodes = pd.read_csv(os.path.join(loc, "inc_codes.csv"),
+    dfinccodes = pd.read_csv(os.path.join(loc, loc_codes, "inc_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
 
     # Import age code dictionary csv to df
-    dfagecodes = pd.read_csv(os.path.join(loc, "age_codes.csv"),
+    dfagecodes = pd.read_csv(os.path.join(loc, loc_codes, "age_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
 
     # Import employment status code dictionary csv to df
-    dfempcodes = pd.read_csv(os.path.join(loc, "employ_codes.csv"),
+    dfempcodes = pd.read_csv(os.path.join(loc, loc_codes, "employ_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
 
     # Import industry and occupation code dictionary csv to df
-    dfindcodes = pd.read_csv(os.path.join(loc, "indocc_codes.csv"),
+    dfindcodes = pd.read_csv(os.path.join(loc, loc_codes, "indocc_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'FLAG': str, 'CODE': str, 'NAME': str})
 
     # Import race code dictionary csv to df
-    dfraccodes = pd.read_csv(os.path.join(loc, "race_codes.csv"),
+    dfraccodes = pd.read_csv(os.path.join(loc, loc_codes, "race_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str, 'NAME2012': str})
 
     # Import location (state) code dictionary csv to df
-    dfloccodes = pd.read_csv(os.path.join(loc, "state_codes.csv"),
+    dfloccodes = pd.read_csv(os.path.join(loc, loc_codes, "state_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
 
     # Import "who activity is performed with" code dictionary csv to df
-    dfwhocodes = pd.read_csv(os.path.join(loc, "who_codes.csv"),
+    dfwhocodes = pd.read_csv(os.path.join(loc, loc_codes, "who_codes.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
 
     # Import input codes
-    dfdemocodes = pd.read_csv(os.path.join(loc, "demographic_codes.csv"),
-                             index_col=False,
-                             sep=';',
-                             dtype={'CODE': str, 'NAME': str})
+    dfdemocodes = pd.read_csv(os.path.join(loc, loc_codes, "demographic_codes.csv"),
+                              index_col=False,
+                              sep=';',
+                              dtype={'CODE': str, 'NAME': str})
 
     return [df, dfactcodes, dfeducodes, dfinccodes, dfagecodes,
             dfempcodes, dfindcodes, dfraccodes, dfloccodes, dfwhocodes,

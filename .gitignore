@@ -30,9 +30,9 @@ wheels/
 .DS_Store
 
 # Data / docs
-test*
+tests/
 data/
 docs/
 
-# Conifg
+# Config
 config
