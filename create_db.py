@@ -12,15 +12,13 @@ from atusfunclib import load_data
 from sqlalchemy import create_engine
 import yaml
 
-#PATH = "/Users/jeremysmith/Documents/python-scripts/TDICapstoneProject/data"
-PATH = "/home/vagrant/capstoneproject/TDICapstoneProject/data"
-
 # Load config file
 with open('config', 'r') as f:
     print "Loading config..."
     config = yaml.load(f)
     SQL_PASSWORD = config['sql']['pass']
     SQL_USERNAME = config['sql']['user']
+    PATH = config['data']['path']
 
 # Import all data
 print "Loading all data..."
