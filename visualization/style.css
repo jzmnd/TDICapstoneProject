@@ -1,8 +1,7 @@
 body {
   font: 300 18px "Helvetica Neue";
   color: black;
-  height: 2000px;
-  width: 1020px;
+  width: 1220px;
   margin: 10px 40px 10px 40px;
   overflow: auto;
   position: relative;
@@ -11,22 +10,47 @@ body {
 #svg1 {
   position: relative;
   top: 65px;
-  height: 780px;
+  height: 680px;
   left: 0;
 }
 
 #svg2 {
   position: relative;
   top: 50px;
-  height: 680px;
+  height: 880px;
   left: 0;
 }
 
-#svg3 {
+#svg3a {
   position: relative;
   top: 50px;
-  height: 680px;
-  left: 0;
+  height: 340px;
+  width: 50%;
+  float: left;
+}
+
+#svg3b {
+  position: relative;
+  top: 50px;
+  height: 340px;
+  width: 50%;
+  float: right;
+}
+
+#svg3c {
+  position: relative;
+  top: 40px;
+  height: 340px;
+  width: 50%;
+  float: left;
+}
+
+#svg3d {
+  position: relative;
+  top: 40px;
+  height: 340px;
+  width: 50%;
+  float: right;
 }
 
 h1, h2, h3, h4, p {
@@ -35,15 +59,14 @@ h1, h2, h3, h4, p {
 }
 
 h1 {
-  font-size: 64px;
+  text-align: right;
+  font-size: 36px;
 }
 
 h2 {
-  text-align: right;
+  text-align: left;
   font-size: 24px;
-  right: 0;
-  top: 0;
-  position: absolute;
+  position: inherit;
 }
 
 h3 {
@@ -51,7 +74,7 @@ h3 {
   text-align: right;
   font-size: 18px;
   right: 0;
-  top: 35px;
+  top: 45px;
   position: absolute;
 }
 

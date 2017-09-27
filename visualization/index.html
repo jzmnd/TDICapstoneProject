@@ -5,19 +5,44 @@
   </head>
   <body>
     <div>
-      <h2>Work-Life Balance Predictors</h2>
+      <h1>Work-Life Balance Predictors</h1>
       <h3>Jeremy Smith</h3>
       <h4>Plotted for respondents who are over 18 years old</h4>
     </div>
+
     <div id="svg1">
-      <h4>Plot 1 - Deviations from mean of significant activities (grouped by age)</h4>
+      <h2>Plot 1 - Deviations from mean of some significant activities (grouped by age)</h2>
       <object width="1020" height="480" data="fig01.svg" type="image/svg+xml"></object>
     </div>
+
     <div id="svg2">
-      <h4>Plot 2 - Distribution of activity times grouped by income</h4>
+      <h2>Plot 2 - Distribution of activity times grouped by income</h2>
       <h4>Red: Low income (less than $200 per week)</h4>
       <h4>Blue: High income (more than $1500 per week)</h4>
-      <object width="1020" height="680" data="fig02.svg" type="image/svg+xml"></object>
+      <object width="1020" height="580" data="fig02.svg" type="image/svg+xml"></object>
     </div>
+
+    <div>
+      <h2>Plot 3 - K-Means clustering of activity times</h2>
+      <h4>Weekdays only, showing 2 out of the 9 clusters</h4>
+      <div id='svg3a'>
+        <h4>"Cluster 1 - Unemployed Job Seekers"</h4>
+        <object width="600" height="320" data="fig_group0_neg.svg" type="image/svg+xml"></object>
+      </div>
+      <div id='svg3b'>
+        <h4>"Cluster 2 - Full Time Workers"</h4>
+        <object width="600" height="320" data="fig_group8_neg.svg" type="image/svg+xml"></object>
+      </div>
+    </div>
+
+    <div>
+      <div id='svg3c'>
+        <object width="600" height="320" data="fig_group0_pos.svg" type="image/svg+xml"></object>
+      </div>
+      <div id='svg3d'>
+        <object width="600" height="320" data="fig_group8_pos.svg" type="image/svg+xml"></object>
+      </div>
+    </div>
+
   </body>
 </html>
