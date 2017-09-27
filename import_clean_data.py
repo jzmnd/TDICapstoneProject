@@ -108,6 +108,12 @@ dfsum_use = dfsum[['TUCASEID', 'TEAGE', 'TESEX',            # Case ID, Responden
                    'TRCHILDNUM',                            # Number of household children < 18
                    'TUFNWGTP']].copy()                      # Final ATUS weight
 
+# Fix GEMETSTA with new values
+dfsum_use.GEMETSTA = dfsum_use.GEMETSTA.fillna(dfsum_use.GTMETSTA)
+
+# Add a weekend indicator
+dfsum_use['TRWEEKEND'] = pd.Series((dfsum_use.TUDIARYDAY == 1) | (dfsum_use.TUDIARYDAY == 7), dtype=int)
+
 # Add age category
 bins = [0, 17, 25, 30, 35, 40, 45, 50, 60, 70, 100]
 labels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
