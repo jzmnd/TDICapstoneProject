@@ -100,31 +100,42 @@
         </section>
 
         <section>
-          <div id="svg2">
-            <h4>How are these activity times distributed?</h4>
-            <p><small>Distribution of activity times by income</small><br>
+          <h4>How are these activity times distributed?</h4>
+          <section>
+            <p><small>KDE distribution of activity times by age</small><br>
+            <small style="color:red">Red: under 30's</small>
+            <small style="color:blue">Blue: over 60's</small></p>
+            <object width="70%" data="images/fig02b.svg" type="image/svg+xml"></object>
+          </section>
+          <section>
+            <p><small>KDE distribution of activity times by income</small><br>
             <small style="color:red">Red: Low income (less than $200 per week)</small>
             <small style="color:blue">Blue: High income (more than $1500 per week)</small></p>
             <object width="70%" data="images/fig02.svg" type="image/svg+xml"></object>
-          </div>
+          </section>
         </section>
-
 
         <section>
           <h4>Clustering by activity time</h4>
-          <p><small>Finding groups of people based on how they spend their time using KMeans unsupervised learning</small></p>
           <section>
-            <object width="45%" data="images/fig_group0_neg.svg" type="image/svg+xml"></object>
-            <object width="52%" data="images/fig_group0_pos.svg" type="image/svg+xml"></object>
-            <p>Cluster 1: "Unemployed Job Seekers"</p>
+            <p><small>Finding groups of people based on how they spend their time using KMeans unsupervised learning</small></p>
+            <img width="42%" src="images/g0.png" />
+            <p>Cluster 1: "Part Time Workers with Children"</p>
           </section>
           <section>
-            <object width="45%" data="images/fig_group8_neg.svg" type="image/svg+xml"></object>
-            <object width="52%" data="images/fig_group8_pos.svg" type="image/svg+xml"></object>
-            <p>Cluster 2: "Full Time Workers without Children"</p>
+            <img width="42%" src="images/g1.png" />
+            <p>Cluster 2: "Full Time Workers"</p>
+          </section>
+          <section>
+            <img width="42%" src="images/g4.png" />
+            <p>Cluster 3: "Students"</p>
           </section>
         </section>
 
+        <section>
+          <h4>Prediction based on demographic</h4>
+          <p>Link to web app here!</p>
+        </section>
 
       </div>
     </div>

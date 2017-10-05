@@ -7,6 +7,10 @@ body {
   position: relative;
 }
 
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
 #svg1 {
   position: relative;
   top: 65px;
