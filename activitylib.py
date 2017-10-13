@@ -32,10 +32,12 @@ activities_t = ['t' + a for a in activities]
 # Activity names dictionaries
 activities_n_dict = dict(zip(dfactcodes.CODE, dfactcodes.NAME))
 activities_n_dict_inter = dict([d for d in zip(dfactcodes.CODE, dfactcodes.NAME) if d[0] in activities])
+activities_n_dict_inter_short = dict([d for d in zip(dfactcodes.CODE, dfactcodes.SHORTNAME) if d[0] in activities])
 
 # Activity codes dictionary
 activities_c_dict = dict(zip(dfactcodes.NAME, dfactcodes.CODE))
 activities_c_dict_inter = dict([d for d in zip(dfactcodes.NAME, dfactcodes.CODE) if d[1] in activities])
+activities_c_dict_inter_short = dict([d for d in zip(dfactcodes.SHORTNAME, dfactcodes.CODE) if d[1] in activities])
 
 # Infodict for all values
 ACTINFO = {'positiveWL': positiveWL,
@@ -46,5 +48,7 @@ ACTINFO = {'positiveWL': positiveWL,
            'activities_t': activities_t,
            'activities_n_dict': activities_n_dict,
            'activities_n_dict_inter': activities_n_dict_inter,
+           'activities_n_dict_inter_short': activities_n_dict_inter_short,
            'activities_c_dict': activities_c_dict,
-           'activities_c_dict_inter': activities_c_dict_inter}
+           'activities_c_dict_inter': activities_c_dict_inter,
+           'activities_c_dict_inter_short': activities_c_dict_inter_short}

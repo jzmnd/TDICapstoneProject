@@ -49,6 +49,14 @@ def load_actcodes(loc='data', loc_codes="code_tables"):
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
+    
+    # Import short names and merge
+    defactshrt = pd.read_csv(os.path.join(loc, loc_codes, "activity_codes_short.csv"),
+                             index_col=False,
+                             sep=';',
+                             dtype={'CODE': str, 'SHORTNAME': str})
+    dfactcodes = dfactcodes.merge(defactshrt, how='outer', on='CODE')
+    
     return dfactcodes
 
 
