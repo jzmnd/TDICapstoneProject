@@ -27,7 +27,7 @@ neutral = ['06', '07', '09', '18']
 
 activities = positiveWL + negoccWL + neghomeWL + neutral
 
-activities_t = ['t'+ a for a in activities]
+activities_t = ['t' + a for a in activities]
 
 # Activity names dictionaries
 activities_n_dict = dict(zip(dfactcodes.CODE, dfactcodes.NAME))
