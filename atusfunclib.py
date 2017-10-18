@@ -24,19 +24,19 @@ def group_filter_average(df, groupbycol, filtercol, fval, fab='a', weights='TUFN
 
     # Group by
     df_group = df_filter.groupby(groupbycol)
-    
+
     # Average minutes per day on a particular activity (across all groups)
     df_av = df_filter.filter(like='_W').filter(like='t').sum() / df_filter[weights].sum()
 
     # Weighted average activity times by group
     df_av_group_times = df_group.sum().filter(like='_W').filter(like='t').divide(df_group[weights].sum(), axis='index')
     # Mean metrics by group
-    df_av_group_mets  = df_group.mean().filter(like='metric')
-    
+    df_av_group_mets = df_group.mean().filter(like='metric')
+
     del df_filter
-    
+
     df_av_group = df_av_group_times.join(df_av_group_mets, how='left')
-    
+
     del df_av_group_times
     del df_av_group_mets
 
@@ -49,14 +49,14 @@ def load_actcodes(loc='data', loc_codes="code_tables"):
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'NAME': str})
-    
+
     # Import short names and merge
     defactshrt = pd.read_csv(os.path.join(loc, loc_codes, "activity_codes_short.csv"),
                              index_col=False,
                              sep=';',
                              dtype={'CODE': str, 'SHORTNAME': str})
     dfactcodes = dfactcodes.merge(defactshrt, how='outer', on='CODE')
-    
+
     return dfactcodes
 
 

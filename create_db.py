@@ -74,7 +74,7 @@ for k in codedfs.keys():
 # Create csv subfiles from data dfs
 print "Creating clean csv subfiles..."
 for k in datadfs.keys():
-    filenamestring = os.path.join(PATH,  "cleaned_data", "{}.csv".format(k))
+    filenamestring = os.path.join(PATH, "cleaned_data", "{}.csv".format(k))
     datadfs[k].to_csv(filenamestring)
 
 # SQL statements for table create, copy and drop table

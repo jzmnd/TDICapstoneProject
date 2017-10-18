@@ -36,6 +36,7 @@ wheels/
 tests/
 data/
 docs/
+models/
 
 # Config
 config
