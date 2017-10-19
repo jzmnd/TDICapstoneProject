@@ -10,11 +10,11 @@ j.smith.03@cantab.net
 import numpy as np
 
 
-# Metric 1: Weighted sum(life) / sum(work) with Bayesian smoothing
+# Metric 1: Weighted sum(life) / sum(work) with Bayesian smoothing and mean normalization
 def w_l_balance_weighted_ratio(df, pos, neg, weights_p, weights_n, N=1):
-    pos_c = ['t' + a for a in pos]
-    neg_c = ['t' + a for a in neg]
-    wl = np.log((df[pos_c].dot(weights_p) + N) / (df[neg_c].dot(weights_n) + N))
+    df_p = df[['t' + a for a in pos]]
+    df_n = df[['t' + a for a in neg]]
+    wl = ((df_p / df_p.mean()).dot(weights_p) + N) / ((df_n / df_n.mean()).dot(weights_n) + N)
     return wl
 
 
