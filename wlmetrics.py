@@ -8,13 +8,14 @@ j.smith.03@cantab.net
 """
 
 import numpy as np
+from sklearn.preprocessing import minmax_scale
 
 
-# Metric 1: Weighted sum(life) / sum(work) with Bayesian smoothing and mean normalization
-def w_l_balance_weighted_ratio(df, pos, neg, weights_p, weights_n, N=1):
+# Metric 1: Weighted sum(life) - sum(work) normalized to (0,1)
+def w_l_balance_weighted_ratio(df, pos, neg, weights_p, weights_n):
     df_p = df[['t' + a for a in pos]]
     df_n = df[['t' + a for a in neg]]
-    wl = ((df_p / df_p.mean()).dot(weights_p) + N) / ((df_n / df_n.mean()).dot(weights_n) + N)
+    wl = minmax_scale(df_p.dot(weights_p) - df_n.dot(weights_n))
     return wl
 
 
