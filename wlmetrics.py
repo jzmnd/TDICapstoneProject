@@ -8,14 +8,16 @@ j.smith.03@cantab.net
 """
 
 import numpy as np
-from sklearn.preprocessing import minmax_scale
+import pandas as pd
 
 
 # Metric 1: Weighted sum(life) - sum(work) normalized to (0,1)
 def w_l_balance_weighted_ratio(df, pos, neg, weights_p, weights_n):
     df_p = df[['t' + a for a in pos]]
     df_n = df[['t' + a for a in neg]]
-    wl = minmax_scale(df_p.dot(weights_p) - df_n.dot(weights_n))
+    wl = df_p.dot(weights_p) - df_n.dot(weights_n)
+    wl -= wl.min()
+    wl /= wl.max()
     return wl
 
 
@@ -29,7 +31,7 @@ def w_l_balance_workday(df, workid='0501', hours=10):
 def w_l_balance_personalcare(df):
     pc = ['010101', '0102', '0103', '1101']
     pc_c = ['t' + a for a in pc]
-    wl = df[pc_c].sum(axis=1) / (24 * 60)
+    wl = df[pc_c].sum(axis=1) / (24. * 60.)
     return wl
 
 
@@ -37,7 +39,7 @@ def w_l_balance_personalcare(df):
 def w_l_balance_leisuresocial(df):
     ls = ['1201', '1202', '1203', '1204', '1301', '1302', '14']
     ls_c = ['t' + a for a in ls]
-    wl = df[ls_c].sum(axis=1) / (24 * 60)
+    wl = df[ls_c].sum(axis=1) / (24. * 60.)
     return wl
 
 

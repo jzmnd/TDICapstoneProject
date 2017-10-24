@@ -72,3 +72,12 @@ class EstimatorTransformer(base.BaseEstimator, base.TransformerMixin):
     def transform(self, X):
         p = self.estimator.predict(X)
         return p.reshape(-1, 1)
+
+
+class ImputeNumber(base.BaseEstimator, base.TransformerMixin):
+        
+    def fit(self, X, y):
+        return self
+    
+    def transform(self, X):
+        return np.nan_to_num(X)
