@@ -23,7 +23,8 @@ def w_l_balance_weighted_ratio(df, pos, neg, weights_p, weights_n):
 
 # Metric 3: % of day spent on Personal Care
 def w_l_balance_personalcare(df):
-    pc = ['010101', '0102', '0103', '1101']
+    #pc = ['010101', '0102', '0103', '1101']
+    pc = ['0102', '0103', '1101']
     pc_c = ['t' + a for a in pc]
     wl = df[pc_c].sum(axis=1) / (24. * 60.)
     return wl
