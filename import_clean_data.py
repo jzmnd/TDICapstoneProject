@@ -14,7 +14,7 @@ j.smith.03@cantab.net
 
 import os
 import pandas as pd
-
+import numpy as np
 
 # Note: Values of -4, -3, -2, -1 indicate variable, blank, don't know or refused therefore convert to NaN
 na_values = [-4, -3, -2, -1]
@@ -62,6 +62,17 @@ dfactcodes = pd.read_csv(fn,
                          index_col=False,
                          sep=';',
                          dtype={'CODE': str, 'NAME': str})
+
+# Import location (state) code dictionary csv to df
+fn = os.path.join("data", "code_tables", "state_codes.csv")
+print "Loading... {}".format(fn)
+dfloccodes = pd.read_csv(fn,
+                         index_col=False,
+                         sep=';',
+                         dtype={'CODE': str, 'NAME': str,
+                                'LONGNAME': str, 'ABV': str, 'SLUG': str,
+                                'LATITUDE': float, 'LONGITUDE': float,
+                                'POPULATION': float, 'AREA': float})
 
 # Add codepoint level (1, 2 or 3) and sort
 dfactcodes['LEVEL'] = dfactcodes.CODE.str.len() / 2
@@ -123,6 +134,10 @@ dfsum_use['TEAGE_CAT'] = pd.cut(dfsum_use['TEAGE'], bins, labels=labels, right=T
 # Useful columns for CPS df
 dfcps_use = dfcps[dfcps.TULINENO == 1][['TUCASEID', 'GESTFIPS']].copy()     # Case ID, State code
 
+# Add lat-long data from state (GESTFIPS)
+dfcps_use_ll = dfcps_use.merge(dfloccodes[['CODE', 'LATITUDE', 'LONGITUDE']].astype({'CODE': np.int64}),
+                               how='left', left_on='GESTFIPS', right_on='CODE').drop('CODE', axis=1)
+
 # Activity totals columns for activity summary df
 dfsum_acttotals = dfsum.filter(regex='TUCASEID|t')
 
@@ -139,7 +154,7 @@ dfmerged = dfsum_use.merge(dfresp_use,
                            on='TUCASEID',
                            how='left',
                            copy=False) \
-                    .merge(dfcps_use,
+                    .merge(dfcps_use_ll,
                            on='TUCASEID',
                            how='left',
                            copy=False) \

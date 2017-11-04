@@ -116,7 +116,10 @@ def load_data(loc='data', loc_clean="cleaned_data", loc_codes="code_tables"):
     dfloccodes = pd.read_csv(os.path.join(loc, loc_codes, "state_codes.csv"),
                              index_col=False,
                              sep=';',
-                             dtype={'CODE': str, 'NAME': str})
+                             dtype={'CODE': str, 'NAME': str,
+                                    'LONGNAME': str, 'ABV': str, 'SLUG': str,
+                                    'LATITUDE': float, 'LONGITUDE': float,
+                                    'POPULATION': float, 'AREA': float})
 
     # Import "who activity is performed with" code dictionary csv to df
     dfwhocodes = pd.read_csv(os.path.join(loc, loc_codes, "who_codes.csv"),
