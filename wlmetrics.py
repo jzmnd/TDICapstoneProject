@@ -24,7 +24,6 @@ def w_l_balance_weighted_ratio(df, pos, neg, weights_p, weights_n):
 # Metric 3: % of day spent on Personal Care
 def w_l_balance_personalcare(df):
     pc = ['010101', '0102', '0103', '1101']
-    #pc = ['0102', '0103', '1101']
     pc_c = ['t' + a for a in pc]
     wl = df[pc_c].sum(axis=1) / (24. * 60.)
     return wl
@@ -44,7 +43,7 @@ def w_l_balance_workday(df, workid='0501', hours=9):
     return wl
 
 
-# Metric 6: More than 4h childcare and/or housework
+# Metric 6: More than x hours childcare and/or housework
 def w_l_balance_housework(df, hours=4):
     workids = ['0301', '0302', '0303', '0201', '0202', '0209']
     workids_c = ['t' + a for a in workids]

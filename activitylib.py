@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 """
 activitylib.py
-Activity times lib
+Activity times infodict
 
 Created by Jeremy Smith on 2017-10-11
 j.smith.03@cantab.net

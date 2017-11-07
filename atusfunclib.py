@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 """
 atusfunclib.py
-Functions for processing ATUS data
+Functions for processing ATUS dataset
 
 Created by Jeremy Smith on 2017-09-08
 j.smith.03@cantab.net
